@@ -161,14 +161,6 @@
   dependencies:
     "@types/yeoman-generator" "*"
 
-"@typescript-eslint/eslint-plugin-tslint@^2.29.0":
-  version "2.29.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin-tslint/-/eslint-plugin-tslint-2.29.0.tgz#1586c6f88043164b64a017e9952518c1b985299d"
-  integrity sha512-r8mZE1dfDLj7B65TLvAk9SvGCdoyD/ZbuqTDhKf2+MkdMC6R99+uznz2JJ8WG+T7E2i8i5OWDFQQEcWoNDKQvQ==
-  dependencies:
-    "@typescript-eslint/experimental-utils" "2.29.0"
-    lodash "^4.17.15"
-
 "@typescript-eslint/eslint-plugin@^2.29.0":
   version "2.29.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-2.29.0.tgz#c9efab7624e3dd6d144a0e4577a541d1bd42c2ac"
@@ -199,7 +191,7 @@
     "@typescript-eslint/typescript-estree" "2.29.0"
     eslint-visitor-keys "^1.1.0"
 
-"@typescript-eslint/typescript-estree@2.29.0", "@typescript-eslint/typescript-estree@^2.29.0":
+"@typescript-eslint/typescript-estree@2.29.0":
   version "2.29.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/typescript-estree/-/typescript-estree-2.29.0.tgz#1be6612bb02fc37ac9f466521c1459a4744e8d3a"
   integrity sha512-3YGbtnWy4az16Egy5Fj5CckkVlpIh0MADtAQza+jiMADRSKkjdpzZp/5WuvwK/Qib3Z0HtzrDFeWanS99dNhnA==
@@ -436,6 +428,11 @@ capture-stack-trace@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/capture-stack-trace/-/capture-stack-trace-1.0.1.tgz#a6c0bbe1f38f3aa0b92238ecb6ff42c344d4135d"
   integrity sha512-mYQLZnx5Qt1JgB1WEiMCf2647plpGeQ2NMR/5L0HNZzGQo4fuSPnK+wjfPnKZV0aiJDgzmWqqkV/g7JD+DW0qw==
+
+case@^1.6.3:
+  version "1.6.3"
+  resolved "https://registry.yarnpkg.com/case/-/case-1.6.3.tgz#0a4386e3e9825351ca2e6216c60467ff5f1ea1c9"
+  integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
 chalk@^2.0.0, chalk@^2.0.1, chalk@^2.1.0, chalk@^2.4.1, chalk@^2.4.2:
   version "2.4.2"
@@ -2396,6 +2393,11 @@ source-map@^0.5.6:
   version "0.5.7"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.5.7.tgz#8a039d2d1021d22d1ea14c80d8ea468ba2ef3fcc"
   integrity sha1-igOdLRAh0i0eoUyA2OpGi6LvP8w=
+
+source-map@^0.7.3:
+  version "0.7.3"
+  resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.7.3.tgz#5302f8169031735226544092e64981f751750383"
+  integrity sha512-CkCj6giN3S+n9qrYiBTX5gystlENnRW5jZeNLHpe6aue+SrHcG5VYwujhW9s4dY31mEGsxBDrHR6oI69fTXsaQ==
 
 spdx-correct@^3.0.0:
   version "3.1.0"
