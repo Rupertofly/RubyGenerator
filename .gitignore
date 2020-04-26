@@ -158,3 +158,17 @@ Temporary Items
 .apdisk
 
 # End of https://www.gitignore.io/api/macos
+
+# Created by https://www.gitignore.io/api/yeoman
+# Edit at https://www.gitignore.io/?templates=yeoman
+app
+!src/**/*
+### Yeoman ###
+node_modules/
+bower_components/
+*.log
+
+build/
+dist/
+
+# End of https://www.gitignore.io/api/yeoman

@@ -1,26 +1,40 @@
 {
-  "name": "@rupertofly/rubyqGenerator",
-  "version": "0.4.0",
-  "description": "just a nice generator for my ts projects",
-  "main": "dist/index.js",
-  "repository": "git@github.com:Rupertofly/RubyGenerator.git",
-  "author": "Ruby Quail <ruby@rubyquail.design>",
-  "license": "MIT",
-  "private": false,
-  "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^2.29.0",
-    "@typescript-eslint/eslint-plugin-tslint": "^2.29.0",
-    "@typescript-eslint/experimental-utils": "^2.29.0",
-    "@typescript-eslint/parser": "^2.29.0",
-    "@typescript-eslint/typescript-estree": "^2.29.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-prettier": "^3.1.3",
-    "yeoman-generator": "^4.9.0"
-  },
-  "devDependencies": {
-    "@types/yeoman-generator": "^3.1.4",
-    "eslint": "^6.8.0",
-    "tslib": "^1.11.1",
-    "typescript": "^3.8.3"
-  }
+    "name": "@rupertofly/generator-rubyq",
+    "version": "0.4.0",
+    "description": "just a nice generator for my ts projects",
+    "main": "dist/index.js",
+    "repository": "git@github.com:Rupertofly/RubyGenerator.git",
+    "author": "Ruby Quail <ruby@rubyquail.design>",
+    "license": "MIT",
+    "private": false,
+    "keywords": [
+        "yeoman-generator"
+    ],
+    "dependencies": {
+        "@types/yeoman-test": "^2.0.3",
+        "@typescript-eslint/eslint-plugin": "^2.29.0",
+        "@typescript-eslint/eslint-plugin-tslint": "^2.29.0",
+        "@typescript-eslint/experimental-utils": "^2.29.0",
+        "@typescript-eslint/parser": "^2.29.0",
+        "@typescript-eslint/typescript-estree": "^2.29.0",
+        "eslint-config-prettier": "^6.11.0",
+        "eslint-plugin-prettier": "^3.1.3",
+        "eslint-plugin-tsdoc": "^0.2.4",
+        "prettier": "^2.0.5",
+        "yeoman-generator": "^4.9.0",
+        "yeoman-test": "^2.4.1"
+    },
+    "devDependencies": {
+        "@types/yeoman-generator": "^3.1.4",
+        "eslint": "^6.8.0",
+        "tslib": "^1.11.1",
+        "typescript": "^3.8.3"
+    },
+    "prettier": {
+        "singleQuote": true,
+        "tabWidth": 4
+    },
+    "files": [
+        "generators"
+    ]
 }
