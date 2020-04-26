@@ -130,13 +130,12 @@ class RubyGen extends Generator {
         this.answers = answer;
     }
     async writing() {
-        this.log('copying Files');
+        this.log('copying Files', this.sourceRoot());
         const ROOT = this.destinationRoot();
-        const dP = this.destinationPath;
-        const tP = this.templatePath;
+        const dP = (d: string) => this.destinationPath(d);
+        const tP = (d: string) => this.templatePath(d);
 
-        dP.bind(this);
-        tP.bind(this);
+        this.fs.copyTpl(tP('_package.json'), dP('package.json'), this.answers);
     }
     async install() {
         this.log('installing yarn stuff');
