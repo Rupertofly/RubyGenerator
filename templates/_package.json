@@ -4,5 +4,9 @@
     "description": "<%= desc %>",
     "main": "dist/index.js",
     "author": "<%- author %>",
-    "license": "<%- license %>"
+    "license": "<%- license %>",
+    "prettier": {
+        "singleQuote": true,
+        "tabWidth": 4
+    }
 }

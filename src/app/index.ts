@@ -136,7 +136,7 @@ class RubyGen extends Generator {
 
         if (this.answers.webapp)
             scripts.chrome =
-                '/Applications/Chromium.app/Contents/MacOS/chromium --remote-debugging-port=9222 --app="http://localhost:8080';
+                '/Applications/Chromium.app/Contents/MacOS/chromium --remote-debugging-port=9222 --app="http://localhost:8080"';
         else {
             scripts.build = 'tsc';
             scripts.watch = 'tsc -w';
