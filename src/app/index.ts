@@ -103,12 +103,6 @@ class RubyGen extends Generator {
                 when: ({ scoped }) => scoped,
                 store: true,
             },
-            {
-                type: 'confirm',
-                message: 'run gitHub create',
-                name: 'create',
-                default: false,
-            },
         ]);
 
         console.log(path.basename(this.destinationRoot()));
@@ -132,7 +126,28 @@ class RubyGen extends Generator {
         if (this.answers.webpack) {
             this.fs.copy(tP('_webpack.common.js'), dP('webpack.common.js'));
             this.fs.copy(tP('_webpack.dev.js'), dP('webpack.dev.js'));
+            this.fs.copyTpl(tP('index.pug'), dP('src/index.pug'), {
+                title: C.pascal(this.answers.name),
+            });
         }
+        const scripts: { [name: string]: string } = {
+            test: 'ts-node test/test.ts',
+        };
+
+        if (this.answers.webapp)
+            scripts.chrome =
+                '/Applications/Chromium.app/Contents/MacOS/chromium --remote-debugging-port=9222 --app="http://localhost:8080';
+        else {
+            scripts.build = 'tsc';
+            scripts.watch = 'tsc -w';
+        }
+        if (this.answers.webpack) {
+            scripts.build = 'webpack --config webpack.prod.js';
+            scripts.dev = 'webpack-dev-server --config webpack.dev.js';
+        }
+        this.fs.extendJSON(dP('package.json'), {
+            scripts,
+        });
     }
     async install() {
         this.log('installing yarn stuff');
