@@ -12,7 +12,7 @@ interface PromptAnswers {
     author: string;
     license: string;
     scoped: boolean;
-    scopeName: boolean;
+    scopeName: string;
 }
 class RubyGen extends Generator {
     answers: PromptAnswers;
@@ -48,20 +48,6 @@ class RubyGen extends Generator {
                 message: 'Add D3',
                 name: 'd3',
                 default: true,
-            },
-            {
-                type: 'confirm',
-                message: 'setup a canvas enrioment for testing?',
-                name: 'canvasTest',
-                default: false,
-                when: ({ webapp }) => !webapp,
-            },
-            {
-                type: 'confirm',
-                message: 'setup a canvas enrioment for testing?',
-                name: 'canvasTest',
-                default: false,
-                when: ({ webapp }) => !webapp,
             },
             {
                 type: 'input',
@@ -130,16 +116,59 @@ class RubyGen extends Generator {
         this.answers = answer;
     }
     async writing() {
-        this.log('copying Files', this.sourceRoot());
+        this.log('copying Files', this.templatePath('_package.json'));
         const ROOT = this.destinationRoot();
-        const dP = (d: string) => this.destinationPath(d);
-        const tP = (d: string) => this.templatePath(d);
+        const tP = (d) => this.templatePath(d);
+        const dP = (d) => this.destinationPath(d);
 
+        this.sourceRoot(path.join(__dirname, '../templates'));
         this.fs.copyTpl(tP('_package.json'), dP('package.json'), this.answers);
+        this.fs.copy(tP('.eslintrc.json'), dP('.eslintrc.json'));
+        this.fs.copy(tP('_tsconfig.json'), dP('tsconfig.json'));
+        this.fs.copy(tP('_.gitignore'), dP('.gitignore'));
+        this.fs.write(dP('src/index.ts'), '');
+        this.fs.write(dP('test/test.ts'), '');
+
+        if (this.answers.webpack) {
+            this.fs.copy(tP('_webpack.common.js'), dP('webpack.common.js'));
+            this.fs.copy(tP('_webpack.dev.js'), dP('webpack.dev.js'));
+        }
     }
     async install() {
         this.log('installing yarn stuff');
+        const devDeps = [
+            '@typescript-eslint/eslint-plugin',
+            '@typescript-eslint/parser',
+            'eslint',
+            'typescript',
+            'tslib',
+            'tape',
+            'ts-node',
+            'prettier',
+            'eslint-config-prettier',
+            'eslint-plugin-prettier',
+            'eslint-plugin-tsdoc',
+        ];
+        const deps: string[] = [];
+
+        if (this.answers.react) deps.push('react', 'react-dom');
+        if (this.answers.d3) deps.push('d3');
+
+        if (this.answers.webpack)
+            devDeps.push(
+                'webpack',
+                'webpack-merge',
+                'ts-loader',
+                'css-loader',
+                'sass-loader',
+                'style-loader',
+                'html-webpack-plugin',
+                'mini-css-extract-plugin',
+                'pug',
+                'pug-loader'
+            );
+        this.yarnInstall(deps, {});
+        this.yarnInstall(devDeps, { dev: true });
     }
 }
 export default RubyGen;
-const x = new RubyGen();

@@ -1,0 +1,8 @@
+{
+    "name": "<%= scoped ? `@${scopeName}/${name}`: name %>",
+    "version": "0.1.0",
+    "description": "<%= desc %>",
+    "main": "dist/index.js",
+    "author": "<%- author %>",
+    "license": "<%- license %>"
+}
