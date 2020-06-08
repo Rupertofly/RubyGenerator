@@ -138,7 +138,7 @@ class RubyGen extends Generator {
         }
         if (this.answers.sb) {
             this.fs.copy(tP('_main.js'), dP('.storybook/main.js'));
-            this.fs.write(dP('stories/main.stories.tsx'), '');
+            this.fs.write(dP('stories/main.stories.tsx'), `import '';`);
         }
         const scripts: { [name: string]: string } = {
             test: 'ts-node test/test.ts',
