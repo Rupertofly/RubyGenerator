@@ -1,4 +1,5 @@
 import Generator from 'yeoman-generator';
+// @ts-ignore
 import * as C from 'case';
 import path from 'path';
 interface PromptAnswers {
