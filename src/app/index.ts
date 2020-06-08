@@ -138,7 +138,7 @@ class RubyGen extends Generator {
         }
         if (this.answers.sb) {
             this.fs.copy(tP('_main.js'), dP('.storybook/main.js'));
-            this.fs.write(dP('stories/main.tsx'), '');
+            this.fs.write(dP('stories/main.stories.tsx'), '');
         }
         const scripts: { [name: string]: string } = {
             test: 'ts-node test/test.ts',
@@ -155,7 +155,7 @@ class RubyGen extends Generator {
             scripts.build = 'webpack --config webpack.prod.js';
             scripts.dev = 'webpack-dev-server --config webpack.dev.js';
         }
-        if (this.answers.sb) scripts.storybook = 'start-storybook'
+        if (this.answers.sb) scripts.storybook = 'start-storybook';
         this.fs.extendJSON(dP('package.json'), {
             scripts,
         });
@@ -194,11 +194,15 @@ class RubyGen extends Generator {
                 'pug-loader'
             );
         if (this.answers.sb) {
-            devDeps.push('@storybook/preset-typescript', '@storybook/react','babel-loader','@babel/core');
+            devDeps.push(
+                '@storybook/preset-typescript',
+                '@storybook/react',
+                'babel-loader',
+                '@babel/core'
+            );
         }
         this.yarnInstall(deps, {});
         this.yarnInstall(devDeps, { dev: true });
     }
-
 }
 export default RubyGen;
