@@ -1,2 +1,2 @@
 import helper from 'yeoman-test';
-helper.run(__dirname + '/../dist');
+helper.run(__dirname + '/../app');
