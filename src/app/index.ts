@@ -1,8 +1,6 @@
 import Generator from 'yeoman-generator';
 import * as C from 'case';
 import path from 'path';
-import util from 'util';
-import cp from 'child_process';
 interface PromptAnswers {
     webapp: boolean;
     webpack?: boolean;
