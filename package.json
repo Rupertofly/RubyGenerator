@@ -1,6 +1,6 @@
 {
     "name": "@rupertofly/generator-rubyq",
-    "version": "0.5.1",
+    "version": "0.5.2",
     "description": "just a nice generator for my ts projects",
     "main": "dist/index.js",
     "repository": "git@github.com:Rupertofly/RubyGenerator.git",
