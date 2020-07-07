@@ -1,4 +1,5 @@
 import Generator from 'yeoman-generator';
+// @ts-ignore
 import * as C from 'case';
 import path from 'path';
 interface PromptAnswers {
@@ -13,6 +14,7 @@ interface PromptAnswers {
     license: string;
     scoped: boolean;
     scopeName: string;
+    sb: boolean;
 }
 class RubyGen extends Generator {
     answers: PromptAnswers;
@@ -41,13 +43,18 @@ class RubyGen extends Generator {
                 message: 'Add React',
                 name: 'react',
                 default: false,
-                when: ({ webapp }) => webapp,
             },
             {
                 type: 'confirm',
                 message: 'Add D3',
                 name: 'd3',
                 default: true,
+            },
+            {
+                type: 'confirm',
+                message: 'Add Storybook?',
+                name: 'sb',
+                default: false,
             },
             {
                 type: 'input',
@@ -130,6 +137,10 @@ class RubyGen extends Generator {
                 title: C.pascal(this.answers.name),
             });
         }
+        if (this.answers.sb) {
+            this.fs.copy(tP('_main.js'), dP('.storybook/main.js'));
+            this.fs.write(dP('stories/main.stories.tsx'), `import '';`);
+        }
         const scripts: { [name: string]: string } = {
             test: 'ts-node test/test.ts',
         };
@@ -145,6 +156,7 @@ class RubyGen extends Generator {
             scripts.build = 'webpack --config webpack.prod.js';
             scripts.dev = 'webpack-dev-server --config webpack.dev.js';
         }
+        if (this.answers.sb) scripts.storybook = 'start-storybook';
         this.fs.extendJSON(dP('package.json'), {
             scripts,
         });
@@ -183,6 +195,14 @@ class RubyGen extends Generator {
                 'pug-loader',
                 'tsconfig-paths-webpack-plugin'
             );
+        if (this.answers.sb) {
+            devDeps.push(
+                '@storybook/preset-typescript',
+                '@storybook/react',
+                'babel-loader',
+                '@babel/core'
+            );
+        }
         this.yarnInstall(deps, {});
         this.yarnInstall(devDeps, { dev: true });
     }
