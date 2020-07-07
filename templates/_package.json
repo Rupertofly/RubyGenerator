@@ -1,12 +1,16 @@
 {
-    "name": "<%= scoped ? `@${scopeName}/${name}`: name %>",
-    "version": "0.1.0",
-    "description": "<%= desc %>",
-    "main": "dist/index.js",
-    "author": "<%- author %>",
-    "license": "<%- license %>",
-    "prettier": {
-        "singleQuote": true,
-        "tabWidth": 2
-    }
+  "name": "<%= scoped ? `@${scopeName}/${name}`: name %>",
+  "version": "0.1.0",
+  "description": "<%= desc %>",
+  "main": "dist/index.js",
+  "author": "<%- author %>",
+  "license": "<%- license %>",
+  "prettier": {
+    "singleQuote": true,
+    "tabWidth": 2,
+    "jsxSingleQuote": true,
+    "jsxBracketSameLine": false,
+    "printWidth": 80,
+    "arrowParens": "always"
+  }
 }
