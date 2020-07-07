@@ -180,7 +180,8 @@ class RubyGen extends Generator {
                 'html-webpack-plugin',
                 'mini-css-extract-plugin',
                 'pug',
-                'pug-loader'
+                'pug-loader',
+                'tsconfig-paths-webpack-plugin'
             );
         this.yarnInstall(deps, {});
         this.yarnInstall(devDeps, { dev: true });

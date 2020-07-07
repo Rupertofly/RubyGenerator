@@ -2,7 +2,6 @@
     "compilerOptions": {
         "module": "commonjs",
         "outDir": "./",
-        "rootDir": "src",
         "target": "ES2018",
         "jsx": "react",
         "importHelpers": true,
@@ -12,7 +11,9 @@
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "lib": ["ESNext", "ES2019"],
-        "allowSyntheticDefaultImports": true
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": "src",
+        "paths": {}
     },
     "typeAcquisition": { "enable": true },
     "exclude": ["node_modules", "test"],
