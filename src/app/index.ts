@@ -125,6 +125,7 @@ class RubyGen extends Generator {
     this.fs.copy(tP('.eslintrc.json'), dP('.eslintrc.json'));
     this.fs.copy(tP('_tsconfig.json'), dP('tsconfig.json'));
     this.fs.copy(tP('_.gitignore'), dP('.gitignore'));
+    this.fs.copy(tP('_globals.d.ts'), dP('src/globals.d.ts'));
     this.fs.write(dP('src/index.ts'), '');
     this.fs.write(dP('test/test.ts'), '');
 
@@ -137,6 +138,7 @@ class RubyGen extends Generator {
     }
     if (this.answers.sb) {
       this.fs.copy(tP('_main.js'), dP('.storybook/main.js'));
+      this.fs.write(dP('src/index.stories.ts'), '');
     }
     const scripts: { [name: string]: string } = {
       test: 'ts-node test/test.ts',
