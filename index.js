@@ -107,6 +107,7 @@ class RubyGen extends yeoman_generator_1.default {
         this.fs.copy(tP('.eslintrc.json'), dP('.eslintrc.json'));
         this.fs.copy(tP('_tsconfig.json'), dP('tsconfig.json'));
         this.fs.copy(tP('_.gitignore'), dP('.gitignore'));
+        this.fs.copy(tP('_globals.d.ts'), dP('src/globals.d.ts'));
         this.fs.write(dP('src/index.ts'), '');
         this.fs.write(dP('test/test.ts'), '');
         if (this.answers.webpack) {
@@ -118,6 +119,7 @@ class RubyGen extends yeoman_generator_1.default {
         }
         if (this.answers.sb) {
             this.fs.copy(tP('_main.js'), dP('.storybook/main.js'));
+            this.fs.write(dP('src/index.stories.ts'), '');
         }
         const scripts = {
             test: 'ts-node test/test.ts',
